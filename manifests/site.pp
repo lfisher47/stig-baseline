@@ -6,5 +6,6 @@ node default {
     extrarepo   => ['epel', 'puppetlabs','vmware_tools'],
   } 
   class { 'auditd': }
+  class { 'aide': }
 
 }
