@@ -7,5 +7,6 @@ node default {
   } 
   class { 'auditd': }
   class { 'aide': }
+  class { 'accounts': }
 
 }
