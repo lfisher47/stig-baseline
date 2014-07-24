@@ -10,5 +10,9 @@ node default {
   class { 'accounts': }
   class { 'stig_sysctl': }
   class { 'grub': }
+  class { 'rsyslog::client':
+    log_remote => false,
+    log_local  => true,
+  }
 
 }
