@@ -9,5 +9,6 @@ node default {
   class { 'aide': }
   class { 'accounts': }
   class { 'stig_sysctl': }
+  class { 'grub': }
 
 }
