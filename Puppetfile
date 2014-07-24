@@ -12,6 +12,8 @@ mod 'lfisher47/aide',
    :git => 'git://github.com/lfisher47/puppet-aide.git'
 mod 'lfisher47/accounts',
    :git => 'git://github.com/lfisher47/puppet-accounts.git'
+mod 'lfisher47/stig_sysctl',
+   :git => 'git://github.com/lfisher47/puppet-stig_sysctl.git'
 
 # mod 'apt',
 #   :git => 'https://github.com/puppetlabs/puppetlabs-apt.git',
