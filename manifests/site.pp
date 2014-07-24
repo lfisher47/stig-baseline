@@ -40,5 +40,10 @@ node default {
       'Ciphers' => 'aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,3des-cbc,aes192-cbc,aes256-cbc',
     }
   }
+  class { 'inittab':
+    default_runlevel  => '3',
+    enable_ctrlaltdel => false,
+    require_single_user_mode_password => true,
+  }
 
 }

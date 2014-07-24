@@ -7,6 +7,7 @@ mod 'puppetlabs/stdlib'
 mod 'example42/yum'
 mod 'saz/rsyslog'
 mod 'saz/ssh'
+mod 'ghoneycutt/inittab'
 
 mod 'lfisher47/auditd',
    :git => 'git://github.com/lfisher47/puppet-auditd.git'
