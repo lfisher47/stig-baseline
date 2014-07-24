@@ -6,6 +6,7 @@ forge "http://forge.puppetlabs.com"
 mod 'puppetlabs/stdlib'
 mod 'example42/yum'
 mod 'saz/rsyslog'
+mod 'saz/ssh'
 
 mod 'lfisher47/auditd',
    :git => 'git://github.com/lfisher47/puppet-auditd.git'
