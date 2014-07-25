@@ -22,6 +22,8 @@ mod 'lfisher47/stig_sysctl',
    :git => 'git://github.com/lfisher47/puppet-stig_sysctl.git'
 mod 'lfisher47/grub',
    :git => 'git://github.com/lfisher47/puppet-grub.git'
+mod 'lfisher47/stig_generic',
+   :git => 'git://github.com/lfisher47/puppet-stig_generic.git'
 
 # mod 'apt',
 #   :git => 'https://github.com/puppetlabs/puppetlabs-apt.git',

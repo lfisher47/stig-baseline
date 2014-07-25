@@ -52,6 +52,10 @@ node default {
   }
   #RHEL-06-000113, RHEL-06-000116, RHEL-06-000117
   class { 'firewall': }
+
+  #RHEL-06-000247, RHEL-06-000248 
   class { 'ntp': }
+
+  class { 'stig_generic': }
 
 }
