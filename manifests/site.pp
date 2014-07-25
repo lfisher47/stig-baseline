@@ -57,5 +57,6 @@ node default {
   class { 'ntp': }
 
   class { 'stig_generic': }
+  class { 'kernel': }
 
 }

@@ -24,6 +24,8 @@ mod 'lfisher47/grub',
    :git => 'git://github.com/lfisher47/puppet-grub.git'
 mod 'lfisher47/stig_generic',
    :git => 'git://github.com/lfisher47/puppet-stig_generic.git'
+mod 'lfisher47/kernel',
+   :git => 'git://github.com/lfisher47/puppet-kernel.git'
 
 # mod 'apt',
 #   :git => 'https://github.com/puppetlabs/puppetlabs-apt.git',
