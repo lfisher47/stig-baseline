@@ -7,6 +7,8 @@ mod 'puppetlabs/stdlib'
 mod 'example42/yum'
 mod 'saz/rsyslog'
 mod 'saz/ssh'
+mod 'puppetlabs/firewall'
+mod 'puppetlabs/ntp'
 mod 'ghoneycutt/inittab',
    :git => 'git://github.com/lfisher47/puppet-module-inittab.git'
 

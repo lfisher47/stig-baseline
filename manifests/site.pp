@@ -1,6 +1,6 @@
 node default {
 
-  #V-38487 - gpgcheck=1 set on all extra repos being added.
+  #RHEL-06-000015 - gpgcheck=1 set on all extra repos being added.
   class { 'yum':
     clean_repos => true,
     extrarepo   => ['epel', 'puppetlabs','vmware_tools'],
@@ -38,12 +38,20 @@ node default {
       'PermitUserEnvironment' => 'no',
       #RHEL-06-000243
       'Ciphers' => 'aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,3des-cbc,aes192-cbc,aes256-cbc',
+      #RHEL-06-000507
+      'PrintLastLog' => 'yes',
     }
   }
   class { 'inittab':
+    #RHEL-06-000290
     default_runlevel  => '3',
+    #RHEL-06-000286
     enable_ctrlaltdel => false,
+    #RHEL-06-000069
     require_single_user_mode_password => true,
   }
+  #RHEL-06-000113, RHEL-06-000116, RHEL-06-000117
+  class { 'firewall': }
+  class { 'ntp': }
 
 }
