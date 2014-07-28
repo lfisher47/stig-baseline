@@ -26,6 +26,8 @@ mod 'lfisher47/stig_generic',
    :git => 'git://github.com/lfisher47/puppet-stig_generic.git'
 mod 'lfisher47/kernel',
    :git => 'git://github.com/lfisher47/puppet-kernel.git'
+mod 'lfisher47/pam',
+   :git => 'git://github.com/lfisher47/puppet-pam.git'
 
 # mod 'apt',
 #   :git => 'https://github.com/puppetlabs/puppetlabs-apt.git',

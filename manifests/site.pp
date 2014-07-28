@@ -58,5 +58,6 @@ node default {
 
   class { 'stig_generic': }
   class { 'kernel': }
+  class { 'pam': }
 
 }
