@@ -9,6 +9,7 @@ mod 'saz/rsyslog'
 mod 'saz/ssh'
 mod 'puppetlabs/firewall'
 mod 'puppetlabs/ntp'
+mod 'ghoneycutt/selinux'
 mod 'ghoneycutt/inittab',
    :git => 'git://github.com/lfisher47/puppet-module-inittab.git'
 
