@@ -4,7 +4,6 @@
 forge "http://forge.puppetlabs.com"
 
 mod 'puppetlabs/stdlib'
-mod 'example42/yum'
 mod 'saz/rsyslog'
 mod 'saz/ssh'
 mod 'puppetlabs/firewall'

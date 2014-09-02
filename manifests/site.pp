@@ -1,10 +1,5 @@
 node default {
 
-  #RHEL-06-000015 - gpgcheck=1 set on all extra repos being added.
-  class { 'yum':
-    clean_repos => true,
-    extrarepo   => ['epel', 'puppetlabs','vmware_tools'],
-  } 
   #RHEL-06-000145, RHEL-06-000148, RHEL-06-000154, RHEL-06-000159
   class { 'auditd': }
   class { 'aide': }
