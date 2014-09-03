@@ -9,6 +9,7 @@ mod 'saz/ssh'
 mod 'puppetlabs/firewall'
 mod 'puppetlabs/ntp'
 mod 'ghoneycutt/selinux'
+mod 'rodjek/logrotate'
 mod 'ghoneycutt/inittab',
    :git => 'git://github.com/lfisher47/puppet-module-inittab.git'
 
@@ -28,6 +29,8 @@ mod 'lfisher47/kernel',
    :git => 'git://github.com/lfisher47/puppet-kernel.git'
 mod 'lfisher47/pam',
    :git => 'git://github.com/lfisher47/puppet-pam.git'
+mod 'lfisher47/firewall_wrapper',
+   :git => 'git://github.com/lfisher47/puppet-firewall_wrapper.git'
 
 # mod 'apt',
 #   :git => 'https://github.com/puppetlabs/puppetlabs-apt.git',

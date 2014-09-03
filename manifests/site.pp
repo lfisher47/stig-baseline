@@ -4,7 +4,10 @@ node default {
   class { 'auditd': }
   class { 'aide': }
   class { 'accounts': }
-  class { 'stig_sysctl': }
+  class { 'stig_sysctl': 
+    ip_forward   => 0,
+    log_martians => 1,
+  }
   class { 'grub': }
   # RHEL-06-000020, RHEL-06-000023
   class { 'selinux':
@@ -32,8 +35,6 @@ node default {
       'PermitRootLogin' => 'no',
       #RHEL-06-000239
       'PermitEmptyPasswords' => 'no',
-      #RHEL-06-000240
-      'Banner' => '/etc/issue',
       #RHEL-06-000241
       'PermitUserEnvironment' => 'no',
       #RHEL-06-000243
@@ -51,7 +52,8 @@ node default {
     require_single_user_mode_password => true,
   }
   #RHEL-06-000113, RHEL-06-000116, RHEL-06-000117
-  class { 'firewall': }
+  class { 'rhel::firewall': }
+  class { 'firewall_wrapper': }
 
   #RHEL-06-000247, RHEL-06-000248 
   class { 'ntp': }
