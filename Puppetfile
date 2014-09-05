@@ -6,7 +6,7 @@ forge "http://forge.puppetlabs.com"
 mod 'puppetlabs/stdlib'
 mod 'saz/rsyslog'
 mod 'saz/ssh'
-mod 'saz/sudo',
+mod 'saz/sudo'
 mod 'puppetlabs/firewall'
 mod 'puppetlabs/ntp'
 mod 'ghoneycutt/selinux'
