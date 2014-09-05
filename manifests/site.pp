@@ -54,6 +54,7 @@ node default {
   #RHEL-06-000113, RHEL-06-000116, RHEL-06-000117
   class { 'rhel::firewall': }
   class { 'firewall_wrapper': }
+  class { 'logrotate_wrapper': }
 
   #RHEL-06-000247, RHEL-06-000248 
   class { 'ntp': }
@@ -61,5 +62,11 @@ node default {
   class { 'stig_generic': }
   class { 'kernel': }
   class { 'pam': }
+
+  #Ensure sudo is installed, configured and allows the wheel group.
+  class { 'sudo': }
+  class { 'sudo::allow': 
+    add_groups => 'wheel',
+  }
 
 }

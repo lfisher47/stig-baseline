@@ -6,12 +6,15 @@ forge "http://forge.puppetlabs.com"
 mod 'puppetlabs/stdlib'
 mod 'saz/rsyslog'
 mod 'saz/ssh'
+mod 'saz/sudo',
 mod 'puppetlabs/firewall'
 mod 'puppetlabs/ntp'
 mod 'ghoneycutt/selinux'
-mod 'rodjek/logrotate'
 mod 'ghoneycutt/inittab',
    :git => 'git://github.com/lfisher47/puppet-module-inittab.git'
+mod 'thias/rhel',
+   :git => 'git://github.com/lfisher47/puppet-rhel.git',
+   :ref => 'patch-1'
 
 mod 'lfisher47/auditd',
    :git => 'git://github.com/lfisher47/puppet-auditd.git'
@@ -31,6 +34,8 @@ mod 'lfisher47/pam',
    :git => 'git://github.com/lfisher47/puppet-pam.git'
 mod 'lfisher47/firewall_wrapper',
    :git => 'git://github.com/lfisher47/puppet-firewall_wrapper.git'
+mod 'lfisher47/logrotate_wrapper',
+   :git => 'git://github.com/lfisher47/puppet-logrotate_wrapper.git'
 
 # mod 'apt',
 #   :git => 'https://github.com/puppetlabs/puppetlabs-apt.git',
