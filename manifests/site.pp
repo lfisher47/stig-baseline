@@ -52,7 +52,9 @@ node default {
     require_single_user_mode_password => true,
   }
   #RHEL-06-000113, RHEL-06-000116, RHEL-06-000117
-  class { 'rhel::firewall': }
+  class { 'rhel::firewall': 
+    ipv6 => false,
+  }
   class { 'firewall_wrapper': }
   class { 'logrotate_wrapper': }
 
