@@ -25,8 +25,27 @@ This process assumes you have access to the internet
 
 # STIG Rules not addressed
 
-All loghost rules were not addressed as these are network specific.  Since we are using saz/rsyslog, you just need to add the loghost info in the class definition in site.pp.
+All loghost rules were not addressed as these are network specific.  
 
-Firewall rules are currently missing as well.
+Since we are using saz/rsyslog, you just need to add the loghost info in the class definition in site.pp.
+An example of this would be 
+```
+class { 'rsyslog::client':
+    log_remote  => true,
+    log_local   => true,
+    server      => 'server.domain.com',
+    remote_type => 'tcp',
+  }
+```
+
+Firewall rules are in place, but due to the nature of kickstart and iptables, you need to run puppet after the first reboot to get the firewall rules to be applied.  This means running `puppet apply -v /etc/puppet/puppetconfigs/manifests/site.pp --modulepath /etc/puppet/puppetconfigs/modules/`
+
+NTP configurations are by default set to go to the internet.  If you want to change the servers for ntp, you should have the following config.
+```
+class { 'ntp':
+  servers => [ 'server1.corp.com','server2.corp.com' ],
+}
+```
 
 Running the automated SCAP scan version 4 available on the DISA website, this configuration received a 91% compliance.
+
