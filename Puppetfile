@@ -18,8 +18,9 @@ mod 'thias/rhel',
 
 mod 'lfisher47/auditd',
    :git => 'git://github.com/lfisher47/puppet-auditd.git'
-mod 'lfisher47/aide',
-   :git => 'git://github.com/lfisher47/puppet-aide.git'
+mod 'mklauber/aide',
+   :git => 'git://github.com/lfisher47/puppet-aide-1.git',
+   :ref => 'hiera-aide'
 mod 'lfisher47/accounts',
    :git => 'git://github.com/lfisher47/puppet-accounts.git'
 mod 'lfisher47/stig_sysctl',
