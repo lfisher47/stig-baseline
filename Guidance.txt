@@ -1,0 +1,110 @@
+
+auditd:
+  I'm controlling the contents of /etc/audit/auditd.conf based on the information give to me.  I believe this needs review as some of the settings are not in accordance with the CIS Benchmark or STIG.
+  I'm also controlling /etc/audit/audit.rules based on the STIG rules.  This may not actually be the file in your git repo so it needs review.
+  Create /etc/cron.weekly/auditd to rotate logs.
+
+umask is being set to 0077 in /etc/profile, /etc/bashrc, /etc/csh.cashrc, and /etc/login.defs
+Updated /etc/securetty so no virtual or serial consoles can be logged into as root.
+Setting the following sysctl parameters:
+kernel.randomize_va_space=2
+kernel.exec-shield=1
+net.ipv4.conf.default.send_redirects=0
+net.ipv4.conf.all.send_redirects=0
+net.ipv4.ip_forward=0
+net.ipv4.conf.all.accept_source_route=0
+net.ipv4.conf.all.accept_redirects=0
+net.ipv4.conf.all.secure_redirects=0
+net.ipv4.conf.all.log_martians=1
+net.ipv4.conf.default.accept_source_route=0
+net.ipv4.conf.default.secure_redirects=0
+net.ipv4.conf.default.accept_redirects=0
+net.ipv4.icmp_echo_ignore_broadcasts=1
+net.ipv4.icmp_ignore_bogus_error_responses=1
+net.ipv4.tcp_syncookies=1
+net.ipv4.conf.all.rp_filter=1
+net.ipv4.conf.default.rp_filter=1
+net.ipv6.conf.default.accept_redirects=0 if ipv6 is enabled.
+fs.suid_dumpable=0
+
+Ensuring permissions on /boot/grub/grub.conf
+Enabling auditing of processes before auditd starts up by putting audit=1 in grub.conf
+Ensure selinux is enforcing and is type targeted
+Currently just doing rsyslog to local, will follow up for changes needed to point to a syslog server.
+SSH config is controlled and will look like:
+# File is managed by Puppet
+
+AcceptEnv LANG LC_*
+ChallengeResponseAuthentication no
+Ciphers aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,3des-cbc,aes192-cbc,aes256-cbc
+ClientAliveCountMax 0
+ClientAliveInterval 900
+HostbasedAuthentication no
+IgnoreRhosts yes
+PermitEmptyPasswords no
+PermitRootLogin no
+PermitUserEnvironment no
+PrintLastLog yes
+PrintMotd no
+Protocol 2
+Subsystem sftp /usr/lib/openssh/sftp-server
+UsePAM yes
+X11Forwarding no
+
+Disabled the ability to reboot system by hitting ctrlaltdel on console.
+Require password in single user mode
+Ensure runlevel is 3
+Ensure ntp is running and pointing to default time servers - will follow up with how to update for other time servers
+Restrict core doumps: 
+* soft core 0
+* hard core 0
+Disabled the following kernel modules:
+install hfsplus /bin/false
+install rds /bin/false
+install sctp /bin/false
+install tipc /bin/false
+install hfs /bin/false
+options ipv6 disable=1
+install freevxfs /bin/false
+install usb-storage /bin/false
+install jffs2 /bin/false
+install cramfs /bin/false
+install udf /bin/false
+install net-pf-31 /bin/false
+install squashfs /bin/false
+install bluetooth /bin/false
+install dccp /bin/false
+
+Set iptables to:
+*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [3:1073]
+-A INPUT -m comment --comment "001 state related established accept" -m state --state RELATED,ESTABLISHED -j ACCEPT
+-A INPUT -p icmp -m comment --comment "003 icmp accept" -j ACCEPT
+-A INPUT -i lo -m comment --comment "005 lo accept" -j ACCEPT
+-A INPUT -p tcp -m multiport --dports 22 -m comment --comment "010 tcp/22 from 0.0.0.0/0" -j ACCEPT
+-A INPUT -m comment --comment "998 last input" -j REJECT --reject-with icmp-port-unreachable
+-A FORWARD -m comment --comment "999 last forward" -j REJECT --reject-with icmp-port-unreachable
+COMMIT
+
+Ensure the following packages installed:
+screen
+Ensure the following packages removed:
+xinetd,telnet-server,rsh-server,ypserv,tftp-server,openldap-servers,sendmail,xorg-x11-server-common, setroubleshoot, mctrans,dovecot
+Ensure services running:
+crond
+
+Ensure login.defs has the following:
+ENCRYPT_METHOD SHA512
+PASS_MAX_DAYS   180
+PASS_MIN_DAYS   7
+PASS_MIN_LEN    12
+PASS_WARN_AGE   7
+
+Enforce perms on /etc/passwd, /etc/group, /etc/shadow, /etc/gshadow
+
+Set the following in /etc/pam.d/system-auth (should probably be reviewed)
+auth    required        pam_faillock.so authfail        deny=3  unlock_time=604800      fail_interval=900
+password    required     pam_cracklib.so try_first_pass retry=3 minlen=12       maxrepeat=3     dcredit=-1      ucredit=-1      ocredit=-1      lcredit=-1
+password    sufficient    pam_unix.so sha256 shadow try_first_pass use_authtok sha512   remember=24
