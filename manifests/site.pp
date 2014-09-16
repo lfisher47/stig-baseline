@@ -40,6 +40,7 @@ node default {
       'Ciphers' => 'aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,3des-cbc,aes192-cbc,aes256-cbc',
       #RHEL-06-000507
       'PrintLastLog' => 'yes',
+      'X11Forwarding' => 'no',
     }
   }
   class { 'inittab':
