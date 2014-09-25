@@ -9,12 +9,10 @@ mod 'saz/ssh'
 mod 'saz/sudo'
 mod 'puppetlabs/firewall'
 mod 'puppetlabs/ntp'
-mod 'ghoneycutt/selinux'
+mod 'spiette/selinux'
 mod 'ghoneycutt/inittab',
    :git => 'git://github.com/lfisher47/puppet-module-inittab.git'
-mod 'thias/rhel',
-   :git => 'git://github.com/lfisher47/puppet-rhel.git',
-   :ref => 'patch-1'
+mod 'thias/rhel'
 
 mod 'lfisher47/auditd',
    :git => 'git://github.com/lfisher47/puppet-auditd.git'

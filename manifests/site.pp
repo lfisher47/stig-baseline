@@ -10,8 +10,8 @@ node default {
   class { 'grub': }
   # RHEL-06-000020, RHEL-06-000023
   class { 'selinux':
-    mode => 'enforcing',
-    type => 'targeted',
+    mode        => 'enforcing',
+    installmake => false,
   }
   #RHEL-06-000133, RHEL-06-000134, RHEL-06-000135,
   class { 'rsyslog::client':
