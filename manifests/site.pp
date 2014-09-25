@@ -58,7 +58,6 @@ node default {
   }
   class { 'apache':
     default_mods      => true,
-    default_ssl_vhost => true,
     server_signature  => 'Off',
     server_tokens     => 'PROD',
   }
