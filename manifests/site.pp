@@ -80,7 +80,7 @@ node default {
       'LOG'           => { 'rules' => '>' },
       'LSPP'          => { 'rules' => 'R+sha256' },
       'DATAONLY'      => { 'rules' => 'p+n+u+g+s+acl+selinux+xattrs+md5+sha256+rmd160+tiger' },
-    }
+    },
     aide_watch => {
       '/boot'                    => { 'rules' => 'NORMAL' },
       '/bin'                     => { 'rules' => 'NORMAL' },
@@ -175,6 +175,6 @@ node default {
       '/var/log/and-httpd'       => { 'type'  => 'exclude' },
       '/root/\..*'               => { 'rules' => 'PERMS' },
       '/etc/.*~'                 => { 'type'  => 'exclude' },
-    }
+    },
   }
 }
