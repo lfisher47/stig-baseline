@@ -4,6 +4,7 @@
 forge "http://forge.puppetlabs.com"
 
 mod 'puppetlabs/stdlib'
+mod 'puppetlabs/apache'
 mod 'saz/rsyslog'
 mod 'saz/ssh'
 mod 'saz/sudo'
@@ -35,6 +36,8 @@ mod 'lfisher47/firewall_wrapper',
    :git => 'git://github.com/lfisher47/puppet-firewall_wrapper.git'
 mod 'lfisher47/logrotate_wrapper',
    :git => 'git://github.com/lfisher47/puppet-logrotate_wrapper.git'
+mod 'johanek/redmine',
+   :git => 'git://github.com/lfisher47/johanek-redmine.git'
 
 # mod 'apt',
 #   :git => 'https://github.com/puppetlabs/puppetlabs-apt.git',

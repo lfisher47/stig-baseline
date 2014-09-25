@@ -10,7 +10,7 @@ node default {
   class { 'grub': }
   # RHEL-06-000020, RHEL-06-000023
   class { 'selinux':
-    mode        => 'enforcing',
+    mode        => 'permissive',
     installmake => false,
   }
   #RHEL-06-000133, RHEL-06-000134, RHEL-06-000135,
@@ -53,9 +53,25 @@ node default {
   }
   #RHEL-06-000113, RHEL-06-000116, RHEL-06-000117
   class { 'rhel::firewall': 
-    ipv6 => false,
+    ipv6    => false,
+    src_ssh => '0.0.0.0/0',
   }
-  class { 'firewall_wrapper': }
+  class { 'apache':
+    default_mods      => true,
+    default_ssl_vhost => true,
+    server_signature  => 'Off',
+    server_tokens     => 'PROD',
+  }
+  class { 'redmine':
+    database_adapter => 'postgresql',
+    download_url     => 'http://www.redmine.org/releases/redmine-2.5.2.tar.gz',
+    version          => '2.5.2',
+  }
+  class { 'firewall_wrapper': 
+    ports => { 'tcp_80_0.0.0.0/0'  => { prefix => '200' },
+               'tcp_443_0.0.0.0/0' => { prefix => '201' },
+    },
+  }
   class { 'logrotate_wrapper': }
 
   #RHEL-06-000247, RHEL-06-000248 
